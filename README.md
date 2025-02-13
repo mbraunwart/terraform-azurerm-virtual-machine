@@ -255,12 +255,12 @@ Type:
 
 ```hcl
 object({
-    name          = string
-    size          = string
-    admin_user    = string
+    name           = string
+    size           = string
+    admin_user     = string
     admin_password = string
-    os_type       = optional(string, "Windows")
-    public_ip_id  = optional(string)
+    os_type        = optional(string, "Windows")
+    public_ip_id   = optional(string)
   })
 ```
 
@@ -283,7 +283,6 @@ Description: Monitoring configuration settings including:
   `log_analytics`              - (Optional) Log Analytics configuration containing:
     `resource_id`        - The Log Analytics workspace resource ID
     `workspace_name`     - The Log Analytics workspace name
-    `storage_account_id` - The storage account ID for diagnostics
 
 Type:
 
@@ -291,9 +290,8 @@ Type:
 object({
     azure_monitor_agent_enabled = optional(bool, false)
     log_analytics = optional(object({
-      resource_id          = string
-      workspace_name       = string
-      storage_account_id   = string
+      resource_id    = string
+      workspace_name = string
     }))
   })
 ```
@@ -311,7 +309,7 @@ Type:
 ```hcl
 object({
     storage_account_type = optional(string, "Standard_LRS")
-    size_gb             = optional(number, 128)
+    size_gb              = optional(number, 128)
   })
 ```
 

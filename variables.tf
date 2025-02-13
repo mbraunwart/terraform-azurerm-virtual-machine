@@ -15,12 +15,12 @@ variable "subnet_id" {
 
 variable "vm_config" {
   type = object({
-    name          = string
-    size          = string
-    admin_user    = string
+    name           = string
+    size           = string
+    admin_user     = string
     admin_password = string
-    os_type       = optional(string, "Windows")
-    public_ip_id  = optional(string)
+    os_type        = optional(string, "Windows")
+    public_ip_id   = optional(string)
   })
   description = <<EOF
 Virtual machine configuration settings including:
@@ -75,7 +75,7 @@ EOF
 variable "os_disk" {
   type = object({
     storage_account_type = optional(string, "Standard_LRS")
-    size_gb             = optional(number, 128)
+    size_gb              = optional(number, 128)
   })
   description = <<EOF
 OS disk configuration including:
@@ -89,9 +89,8 @@ variable "monitoring" {
   type = object({
     azure_monitor_agent_enabled = optional(bool, false)
     log_analytics = optional(object({
-      resource_id          = string
-      workspace_name       = string
-      storage_account_id   = string
+      resource_id    = string
+      workspace_name = string
     }))
   })
   description = <<EOF
@@ -100,7 +99,6 @@ Monitoring configuration settings including:
   `log_analytics`              - (Optional) Log Analytics configuration containing:
     `resource_id`        - The Log Analytics workspace resource ID
     `workspace_name`     - The Log Analytics workspace name
-    `storage_account_id` - The storage account ID for diagnostics
 EOF
   default     = {}
 }
