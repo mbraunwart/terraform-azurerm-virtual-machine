@@ -13,6 +13,17 @@ variable "subnet_id" {
   description = "The ID of the subnet where the VM will be placed."
 }
 
+variable "private_ip_address_allocation" {
+  type        = string
+  description = "The allocation method for the private IP address."
+  default     = "Dynamic"
+
+  validation {
+    condition     = can(regex("^(Dynamic|Static)$", var.private_ip_address_allocation))
+    error_message = "Private IP address allocation must be either 'Dynamic' or 'Static'."
+  }
+}
+
 variable "vm_config" {
   type = object({
     name           = string
