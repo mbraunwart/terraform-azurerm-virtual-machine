@@ -1,9 +1,10 @@
 data "azurerm_client_config" "current" {}
 
 resource "azurerm_network_interface" "nic" {
-  name                = var.vm_config.name
-  resource_group_name = var.resource_group_name
-  location            = var.location
+  name                           = var.vm_config.name
+  resource_group_name            = var.resource_group_name
+  location                       = var.location
+  accelerated_networking_enabled = var.accelerated_networking
 
   ip_configuration {
     name                          = "internal"
@@ -70,7 +71,7 @@ resource "azurerm_windows_virtual_machine" "vm" {
   }
 
   boot_diagnostics {
-    
+
   }
 
   depends_on = [null_resource.accept_marketplace_terms]

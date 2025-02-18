@@ -24,6 +24,12 @@ variable "private_ip_address_allocation" {
   }
 }
 
+variable "accelerated_networking" {
+  type        = bool
+  description = "Enable accelerated networking on the network interface."
+  default     = false
+}
+
 variable "vm_config" {
   type = object({
     name           = string
