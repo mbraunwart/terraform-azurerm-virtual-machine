@@ -12,6 +12,8 @@ resource "azurerm_network_interface" "nic" {
     private_ip_address_allocation = var.private_ip_address_allocation
     public_ip_address_id          = var.vm_config.public_ip_id
   }
+
+  tags = var.tags
 }
 
 resource "null_resource" "accept_marketplace_terms" {
@@ -71,8 +73,10 @@ resource "azurerm_windows_virtual_machine" "vm" {
   }
 
   boot_diagnostics {
-
+    
   }
+
+  tags = var.tags
 
   depends_on = [null_resource.accept_marketplace_terms]
 
@@ -121,6 +125,12 @@ resource "azurerm_linux_virtual_machine" "vm" {
   identity {
     type = "SystemAssigned"
   }
+
+  boot_diagnostics {
+    
+  }
+
+  tags = var.tags
 
   depends_on = [null_resource.accept_marketplace_terms]
 

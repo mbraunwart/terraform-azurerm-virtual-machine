@@ -142,6 +142,8 @@ resource "azurerm_virtual_machine_extension" "windows-ama" {
   type                       = "AzureMonitorWindowsAgent"
   type_handler_version       = "1.0"
   auto_upgrade_minor_version = true
+
+  tags = var.tags
 }
 
 resource "azurerm_virtual_machine_extension" "linux-ama" {
@@ -155,4 +157,6 @@ resource "azurerm_virtual_machine_extension" "linux-ama" {
   auto_upgrade_minor_version = true
 
   depends_on = [azurerm_linux_virtual_machine.vm]
+
+  tags = var.tags
 }
